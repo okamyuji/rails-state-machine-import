@@ -1,0 +1,53 @@
+<% content_for :title, "ジョブ ##{@job.id}" %>
+
+<section class="panel">
+  <h1><%= @job.name %></h1>
+  <dl class="meta">
+    <dt>状態</dt><dd><span class="badge s-<%= @job.status %>"><%= @job.status %></span></dd>
+    <dt>UI層</dt><dd><%= @job.ui_layer %></dd>
+    <dt>進捗</dt><dd><%= @job.processed_rows %> / <%= @job.total_rows %> (<%= number_to_percentage(@job.progress_ratio * 100, precision: 0) %>)</dd>
+    <% if @job.error_message.present? %>
+      <dt>エラー</dt><dd class="error"><%= @job.error_message %></dd>
+    <% end %>
+  </dl>
+
+  <h2>発火できるイベント</h2>
+  <div class="actions">
+    <% @job.available_events.each do |event| %>
+      <%= form_with url: event_import_job_path(@job, event: event), method: :post, local: true do |f| %>
+        <% if event == :PROGRESS %>
+          <%= f.hidden_field :processed_rows, value: [@job.processed_rows + (@job.total_rows / 5.0).ceil, @job.total_rows].min %>
+        <% elsif event == :FAIL %>
+          <%= f.hidden_field :error_message, value: "サンプルエラー" %>
+        <% end %>
+        <%= f.submit event.to_s, class: "btn" %>
+      <% end %>
+    <% end %>
+  </div>
+</section>
+
+<% if @job.ui_layer == :modal %>
+  <div class="modal">
+    <div class="modal-card">
+      <h3>登録が完了しました</h3>
+      <p>「<%= @job.name %>」を登録しました。インポートを開始しますか。</p>
+      <div class="actions">
+        <%= button_to "インポート開始", event_import_job_path(@job, event: :START_IMPORT), method: :post, class: "btn primary" %>
+        <%= button_to "閉じる", event_import_job_path(@job, event: :DISMISS_MODAL), method: :post, class: "btn" %>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+<% if @job.ui_layer == :overlay %>
+  <div class="overlay">
+    <div class="overlay-card">
+      <h3>インポート中です</h3>
+      <p>進捗 <%= number_to_percentage(@job.progress_ratio * 100, precision: 0) %></p>
+      <div class="bar"><span style="width: <%= (@job.progress_ratio * 100).round %>%"></span></div>
+      <% if @job.status == "importing_modal_queued" %>
+        <p class="note">登録完了モーダルはオーバーレイの背面に控えています。DISMISS_MODALで解放されます。</p>
+      <% end %>
+    </div>
+  </div>
+<% end %>

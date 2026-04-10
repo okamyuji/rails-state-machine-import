@@ -1,0 +1,48 @@
+<% content_for :title, "Import Jobs" %>
+
+<section class="panel">
+  <h1>インポートジョブ一覧</h1>
+  <p><%= link_to "新規登録", new_import_job_path, class: "btn primary" %></p>
+
+  <table class="jobs">
+    <thead>
+      <tr><th>ID</th><th>名前</th><th>状態</th><th>進捗</th><th>更新</th></tr>
+    </thead>
+    <tbody>
+      <% @jobs.each do |job| %>
+        <tr>
+          <td><%= link_to job.id, job %></td>
+          <td><%= job.name %></td>
+          <td><span class="badge s-<%= job.status %>"><%= job.status %></span></td>
+          <td><%= number_to_percentage(job.progress_ratio * 100, precision: 0) %></td>
+          <td><%= job.updated_at.strftime("%H:%M:%S") %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</section>
+
+<section class="panel">
+  <h2>状態遷移マトリクス</h2>
+  <p>行が現在の状態、列が発生するイベント、セルが遷移先の状態を表します。</p>
+  <table class="matrix">
+    <thead>
+      <tr>
+        <th>状態＼イベント</th>
+        <% ImportJobMachine::EVENTS.each do |event| %>
+          <th><%= event %></th>
+        <% end %>
+      </tr>
+    </thead>
+    <tbody>
+      <% @matrix.each do |state, row| %>
+        <tr>
+          <th><%= state %></th>
+          <% row.each do |cell| %>
+            <td><%= cell || "—" %></td>
+          <% end %>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</section>

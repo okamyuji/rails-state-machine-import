@@ -1,0 +1,31 @@
+<% content_for :title, "新規登録" %>
+
+<section class="panel">
+  <h1>インポートジョブの新規登録</h1>
+  <%= form_with model: @job, local: true do |f| %>
+    <% if @job.errors.any? %>
+      <div class="errors">
+        <ul>
+          <% @job.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="field">
+      <%= f.label :name, "ジョブ名" %>
+      <%= f.text_field :name, required: true %>
+    </div>
+
+    <div class="field">
+      <%= f.label :total_rows, "対象行数" %>
+      <%= f.number_field :total_rows, min: 1, required: true %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit "登録", class: "btn primary" %>
+      <%= link_to "一覧に戻る", import_jobs_path, class: "btn" %>
+    </div>
+  <% end %>
+</section>
