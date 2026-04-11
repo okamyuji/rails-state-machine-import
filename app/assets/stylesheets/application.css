@@ -82,8 +82,25 @@ h2 { margin-top: 32px; border-bottom: 1px solid #334155; padding-bottom: 6px; }
 
 table { width: 100%; border-collapse: collapse; margin-top: 12px; }
 th, td { padding: 8px 12px; text-align: left; border-bottom: 1px solid #334155; font-size: 14px; }
-.matrix th, .matrix td { text-align: center; }
-.matrix thead th { background: #0f172a; color: var(--muted); font-size: 12px; }
+
+/* 状態遷移マトリクスは列数が多いため、スクロールさせずに全体を画面内に収めます。 */
+.matrix-wrap { width: 100%; }
+table.matrix {
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: collapse;
+}
+.matrix th, .matrix td {
+  text-align: center;
+  padding: 6px 3px;
+  font-size: 11px;
+  line-height: 1.3;
+  word-break: break-word;
+  overflow-wrap: anywhere;
+}
+.matrix thead th { background: #0f172a; color: var(--muted); font-weight: 600; }
+.matrix tbody th { background: #0f172a; font-weight: 600; }
+.matrix thead th:first-child, .matrix tbody th { width: 9%; }
 
 dl.meta { display: grid; grid-template-columns: 120px 1fr; gap: 6px 16px; }
 dl.meta dt { color: var(--muted); }

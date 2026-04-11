@@ -33,10 +33,10 @@ RSpec.describe "インポートジョブの画面操作", type: :feature do
     click_button "登録"
 
     within(".modal") { click_button "インポート開始" }
-    click_button "DISMISS_MODAL"
+    within(".overlay") { click_button "DISMISS_MODAL" }
     expect(page).to have_selector(".badge", text: "importing")
 
-    click_button "COMPLETE"
+    within(".overlay") { click_button "COMPLETE" }
     expect(page).to have_selector(".badge", text: "completed")
     expect(page).not_to have_selector(".overlay")
     expect(page).not_to have_selector(".modal")

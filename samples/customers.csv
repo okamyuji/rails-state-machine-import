@@ -1,0 +1,11 @@
+id,name,email,phone,department
+1,山田太郎,taro.yamada@example.com,03-1234-5678,営業部
+2,佐藤花子,hanako.sato@example.com,03-2345-6789,マーケティング部
+3,鈴木一郎,ichiro.suzuki@example.com,03-3456-7890,開発部
+4,高橋美香,mika.takahashi@example.com,03-4567-8901,人事部
+5,田中健太,kenta.tanaka@example.com,03-5678-9012,経理部
+6,伊藤愛,ai.ito@example.com,03-6789-0123,総務部
+7,渡辺翔,sho.watanabe@example.com,03-7890-1234,法務部
+8,中村彩,aya.nakamura@example.com,03-8901-2345,情報システム部
+9,小林誠,makoto.kobayashi@example.com,03-9012-3456,企画部
+10,加藤優子,yuko.kato@example.com,03-0123-4567,広報部

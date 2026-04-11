@@ -48,6 +48,18 @@
       <% if @job.status == "importing_modal_queued" %>
         <p class="note">登録完了モーダルはオーバーレイの背面に控えています。DISMISS_MODALで解放されます。</p>
       <% end %>
+      <div class="actions">
+        <% @job.available_events.each do |event| %>
+          <%= form_with url: event_import_job_path(@job, event: event), method: :post, local: true do |f| %>
+            <% if event == :PROGRESS %>
+              <%= f.hidden_field :processed_rows, value: [@job.processed_rows + (@job.total_rows / 5.0).ceil, @job.total_rows].min %>
+            <% elsif event == :FAIL %>
+              <%= f.hidden_field :error_message, value: "サンプルエラー" %>
+            <% end %>
+            <%= f.submit event.to_s, class: "btn #{event == :DISMISS_MODAL ? 'primary' : ''}" %>
+          <% end %>
+        <% end %>
+      </div>
     </div>
   </div>
 <% end %>
