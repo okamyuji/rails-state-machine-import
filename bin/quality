@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+# 品質検証コマンドをまとめて実行するエントリーポイントです。
+# pre-commitフックやCIから呼び出される想定です。
+set -euo pipefail
+
+cd "$(dirname "$0")/.."
+
+run() {
+  local label="$1"
+  shift
+  echo "==> ${label}"
+  if "$@"; then
+    echo "    OK"
+  else
+    echo "    FAILED: ${label}" >&2
+    exit 1
+  fi
+}
+
+run "syntax_tree フォーマットチェック" bundle exec stree check "Gemfile" "Rakefile" "app/**/*.rb" "spec/**/*.rb" "config/**/*.rb" "lib/**/*.rb"
+run "rubocop 静的解析" bundle exec rubocop --no-server
+run "brakeman セキュリティ解析" bundle exec brakeman --quiet --no-pager
+run "bundler-audit 依存性監査" bundle exec bundle-audit check --update
+run "sorbet 型検査" bundle exec srb tc
+run "rspec テスト" bundle exec rspec --format progress
+
+echo "==> すべての品質検証が成功しました"
