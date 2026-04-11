@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+# git commit前に品質検証を自動実行するフックです。
+# 初回セットアップ時に bin/setup_hooks を実行することで有効化されます。
+set -euo pipefail
+
+REPO_ROOT="$(git rev-parse --show-toplevel)"
+cd "$REPO_ROOT"
+
+echo "[pre-commit] 品質検証を実行します"
+if ! bin/quality; then
+  echo "[pre-commit] 品質検証に失敗したためコミットを中止します" >&2
+  exit 1
+fi

@@ -1,0 +1,8 @@
+--dir
+.
+--ignore=tmp/
+--ignore=vendor/
+--ignore=node_modules/
+--ignore=storage/
+--ignore=log/
+--suppress-payload-superclass-redefinition-for=RDoc::Markup::Heading

@@ -52,7 +52,7 @@ module Api
         progress: job.progress_ratio,
         error_message: job.error_message,
         ui_layer: job.ui_layer,
-        available_events: job.available_events
+        available_events: job.available_events,
       }
     end
 
@@ -65,7 +65,11 @@ module Api
     end
 
     def render_validation_error(error)
-      render json: { error: "validation_failed", messages: error.record.errors.full_messages }, status: :unprocessable_content
+      render json: {
+               error: "validation_failed",
+               messages: error.record.errors.full_messages,
+             },
+             status: :unprocessable_content
     end
   end
 end

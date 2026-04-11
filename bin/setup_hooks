@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+# .githooks配下のフックスクリプトをgitに登録します。
+# クローン直後にこのスクリプトを一度だけ実行してください。
+set -euo pipefail
+
+cd "$(dirname "$0")/.."
+git config core.hooksPath .githooks
+chmod +x .githooks/*
+echo "pre-commitフックを有効化しました"

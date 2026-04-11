@@ -15,23 +15,34 @@ gem "importmap-rails"
 # gem "bcrypt", "~> 3.1.7"
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem "tzinfo-data", platforms: %i[ windows jruby ]
+gem "tzinfo-data", platforms: %i[windows jruby]
 
 # Add HTTP asset caching/compression and X-Sendfile acceleration to Puma [https://github.com/basecamp/thruster/]
 gem "thruster", require: false
 
 group :development, :test do
-  # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
-  gem "debug", platforms: %i[ mri windows ], require: "debug/prelude"
+  # デバッグ用の標準ゲムです。
+  gem "debug", platforms: %i[mri windows], require: "debug/prelude"
 
-  # Audits gems for known security defects (use config/bundler-audit.yml to ignore issues)
+  # 既知の脆弱性を持つgemを検出します。
   gem "bundler-audit", require: false
 
-  # Static analysis for security vulnerabilities [https://brakemanscanner.org/]
+  # Railsアプリの静的セキュリティ解析を行います。
   gem "brakeman", require: false
 
-  # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
+  # RailsチームによるRuboCopの推奨設定です。
   gem "rubocop-rails-omakase", require: false
+
+  # syntax_treeはRubyのフォーマッタおよび構文解析ツールです。
+  gem "syntax_tree", require: false
+
+  # RSpecによるBDDスタイルのテスト基盤です。
+  gem "rspec-rails", "~> 8.0"
+
+  # Sorbetによる漸進的な型検査です。
+  gem "sorbet", require: false
+  gem "sorbet-runtime"
+  gem "tapioca", require: false
 end
 
 group :development do

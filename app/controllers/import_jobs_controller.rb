@@ -43,9 +43,7 @@ class ImportJobsController < ApplicationController
 
   def build_matrix
     ImportJobMachine::STATES.map do |state|
-      row = ImportJobMachine::EVENTS.map do |event|
-        ImportJobMachine::TRANSITIONS.dig(state, event)
-      end
+      row = ImportJobMachine::EVENTS.map { |event| ImportJobMachine::TRANSITIONS.dig(state, event) }
       [state, row]
     end
   end

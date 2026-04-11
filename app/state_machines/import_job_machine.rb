@@ -5,16 +5,7 @@
 module ImportJobMachine
   module_function
 
-  STATES = %i[
-    idle
-    submitting
-    registered
-    importing
-    importing_modal_queued
-    paused
-    completed
-    failed
-  ].freeze
+  STATES = %i[idle submitting registered importing importing_modal_queued paused completed failed].freeze
 
   EVENTS = %i[
     SUBMIT
@@ -34,38 +25,38 @@ module ImportJobMachine
   # 記事本文のマトリクスと1対1で対応しています。
   TRANSITIONS = {
     idle: {
-      SUBMIT: :submitting
+      SUBMIT: :submitting,
     },
     submitting: {
       SUBMIT_DONE: :registered,
-      SUBMIT_ERROR: :failed
+      SUBMIT_ERROR: :failed,
     },
     registered: {
       START_IMPORT: :importing_modal_queued,
-      DISMISS_MODAL: :idle
+      DISMISS_MODAL: :idle,
     },
     importing: {
       PROGRESS: :importing,
       COMPLETE: :completed,
       FAIL: :failed,
-      PAUSE: :paused
+      PAUSE: :paused,
     },
     importing_modal_queued: {
       DISMISS_MODAL: :importing,
       PROGRESS: :importing_modal_queued,
       COMPLETE: :completed,
       FAIL: :failed,
-      PAUSE: :paused
+      PAUSE: :paused,
     },
     paused: {
-      RESUME: :importing
+      RESUME: :importing,
     },
     completed: {
-      RESET: :idle
+      RESET: :idle,
     },
     failed: {
-      RESET: :idle
-    }
+      RESET: :idle,
+    },
   }.freeze
 
   # 現在の状態から発火可能なイベント一覧を返します。
@@ -98,5 +89,6 @@ module ImportJobMachine
     end
   end
 
-  class InvalidTransition < StandardError; end
+  class InvalidTransition < StandardError
+  end
 end

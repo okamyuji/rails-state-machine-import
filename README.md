@@ -29,10 +29,27 @@ bin/rails server
 ## テスト
 
 ```bash
-bin/rails test:all
+bundle exec rspec
 ```
 
-ユニットテスト、API インテグレーションテスト、Capybara によるシステムテストを含みます。
+RSpec によるユニットテスト、API リクエストテスト、Capybara によるシステムテストを含みます。
+
+## 品質検証
+
+```bash
+bin/quality
+```
+
+以下を一括で実行します。
+
+- syntax_tree によるフォーマットチェック
+- RuboCop（rubocop-rails-omakase ベース）による静的解析
+- Brakeman によるセキュリティ解析
+- bundler-audit による依存性監査
+- Sorbet による型検査
+- RSpec によるテスト
+
+クローン直後に `bin/setup_hooks` を実行すると、`git commit` 前に自動で `bin/quality` が走るようになります。検証に失敗するとコミットは中断されます。
 
 ## ディレクトリ構成
 
