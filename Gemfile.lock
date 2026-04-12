@@ -156,10 +156,6 @@ GEM
       racc (~> 1.4)
     nokogiri (1.19.2-aarch64-linux-musl)
       racc (~> 1.4)
-    nokogiri (1.19.2-arm-linux-gnu)
-      racc (~> 1.4)
-    nokogiri (1.19.2-arm-linux-musl)
-      racc (~> 1.4)
     nokogiri (1.19.2-arm64-darwin)
       racc (~> 1.4)
     nokogiri (1.19.2-x86_64-darwin)
@@ -298,15 +294,15 @@ GEM
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 4.0)
       websocket (~> 1.0)
-    sorbet (0.6.13114)
-      sorbet-static (= 0.6.13114)
-    sorbet-runtime (0.6.13114)
-    sorbet-static (0.6.13114-aarch64-linux)
-    sorbet-static (0.6.13114-universal-darwin)
-    sorbet-static (0.6.13114-x86_64-linux)
-    sorbet-static-and-runtime (0.6.13114)
-      sorbet (= 0.6.13114)
-      sorbet-runtime (= 0.6.13114)
+    sorbet (0.6.13116)
+      sorbet-static (= 0.6.13116)
+    sorbet-runtime (0.6.13116)
+    sorbet-static (0.6.13116-aarch64-linux)
+    sorbet-static (0.6.13116-universal-darwin)
+    sorbet-static (0.6.13116-x86_64-linux)
+    sorbet-static-and-runtime (0.6.13116)
+      sorbet (= 0.6.13116)
+      sorbet-runtime (= 0.6.13116)
     spoom (1.7.12)
       erubi (>= 1.10.0)
       prism (>= 0.28.0)
@@ -317,8 +313,6 @@ GEM
       thor (>= 0.19.2)
     sqlite3 (2.9.2-aarch64-linux-gnu)
     sqlite3 (2.9.2-aarch64-linux-musl)
-    sqlite3 (2.9.2-arm-linux-gnu)
-    sqlite3 (2.9.2-arm-linux-musl)
     sqlite3 (2.9.2-arm64-darwin)
     sqlite3 (2.9.2-x86_64-darwin)
     sqlite3 (2.9.2-x86_64-linux-gnu)
@@ -374,8 +368,6 @@ PLATFORMS
   aarch64-linux
   aarch64-linux-gnu
   aarch64-linux-musl
-  arm-linux-gnu
-  arm-linux-musl
   arm64-darwin
   x86_64-darwin
   x86_64-linux
@@ -458,8 +450,6 @@ CHECKSUMS
   nio4r (2.7.5) sha256=6c90168e48fb5f8e768419c93abb94ba2b892a1d0602cb06eef16d8b7df1dca1
   nokogiri (1.19.2-aarch64-linux-gnu) sha256=c34d5c8208025587554608e98fd88ab125b29c80f9352b821964e9a5d5cfbd19
   nokogiri (1.19.2-aarch64-linux-musl) sha256=7f6b4b0202d507326841a4f790294bf75098aef50c7173443812e3ac5cb06515
-  nokogiri (1.19.2-arm-linux-gnu) sha256=b7fa1139016f3dc850bda1260988f0d749934a939d04ef2da13bec060d7d5081
-  nokogiri (1.19.2-arm-linux-musl) sha256=61114d44f6742ff72194a1b3020967201e2eb982814778d130f6471c11f9828c
   nokogiri (1.19.2-arm64-darwin) sha256=58d8ea2e31a967b843b70487a44c14c8ba1866daa1b9da9be9dbdf1b43dee205
   nokogiri (1.19.2-x86_64-darwin) sha256=7d9af11fda72dfaa2961d8c4d5380ca0b51bc389dc5f8d4b859b9644f195e7a4
   nokogiri (1.19.2-x86_64-linux-gnu) sha256=fa8feca882b73e871a9845f3817a72e9734c8e974bdc4fbad6e4bc6e8076b94f
@@ -506,17 +496,15 @@ CHECKSUMS
   rubyzip (3.2.2) sha256=c0ed99385f0625415c8f05bcae33fe649ed2952894a95ff8b08f26ca57ea5b3c
   securerandom (0.4.1) sha256=cc5193d414a4341b6e225f0cb4446aceca8e50d5e1888743fac16987638ea0b1
   selenium-webdriver (4.43.0) sha256=a634377b964b701c6ac0a009ce3a08fa34ec1e1e7fe9a6d57e3088d14529a65c
-  sorbet (0.6.13114) sha256=5914311e9ce3c1950e03a3f1d73890395be7c7935a522c6d2017d7e4098a7270
-  sorbet-runtime (0.6.13114) sha256=26f71c71bebf432b515b7d561478e6433022eacc151eb5da270c470137c934e8
-  sorbet-static (0.6.13114-aarch64-linux) sha256=3c8bb2fcfa097e9e8dc592548196cde23d88213664fddde518346dc2d8a1e548
-  sorbet-static (0.6.13114-universal-darwin) sha256=67a3b6413e9b5587b821d64409d97b7d7818aacb8918ba1278b678fdd217d2a2
-  sorbet-static (0.6.13114-x86_64-linux) sha256=fb2e25eb6513956fe9009bb04ce02474c99f00698ebce9676fa4964a042ec976
-  sorbet-static-and-runtime (0.6.13114) sha256=58b3a9cb108687e6dc4f4cce2e7503a4af2e90c91b87ea7776b128d9de5f7e38
+  sorbet (0.6.13116) sha256=91c43b7ac806fb53dbf8a6f0d9fbfa8276e02e99b14d0ce372fa1dde80e1c6d9
+  sorbet-runtime (0.6.13116) sha256=0109d1963c05b2f76d63135dc43805c67ed24844aca70c7a2524e0292724389d
+  sorbet-static (0.6.13116-aarch64-linux) sha256=c5da3b7171cf01846b15c465044aa61deccae043f6b56fa7cd5cb482ba89206c
+  sorbet-static (0.6.13116-universal-darwin) sha256=fd76833c3c560f103eaf7cd80b16c8050d8a988c1d68ac88ce599e8814a87a7e
+  sorbet-static (0.6.13116-x86_64-linux) sha256=b05d0bbb8baf43ce3cd42690ca816260a3693fb3bb1c69e8d7ec7eaf3150ae0b
+  sorbet-static-and-runtime (0.6.13116) sha256=d6967fc3416e4016eb0fe1d7f4f5c96b73347de485fb2971c44e8c79d418c35c
   spoom (1.7.12) sha256=67f0b1f835158dba4f19c03ff75b7b7e285dce9165b7b77c2c78cbf54ebf3013
   sqlite3 (2.9.2-aarch64-linux-gnu) sha256=eeb86db55645b85327ba75129e3614658d974bf4da8fdc87018a0d42c59f6e42
   sqlite3 (2.9.2-aarch64-linux-musl) sha256=4feff91fb8c2b13688da34b5627c9d1ed9cedb3ee87a7114ec82209147f07a6d
-  sqlite3 (2.9.2-arm-linux-gnu) sha256=1ee2eb06b5301aaf5ce343a6e88d99ac932d95202d7b350f0e7b6d8d588580d7
-  sqlite3 (2.9.2-arm-linux-musl) sha256=8ca0de6aceede968de0394e22e95d549834c4d8e318f69a92a52f049878a0057
   sqlite3 (2.9.2-arm64-darwin) sha256=d15bd9609a05f9d54930babe039585efc8cadd57517c15b64ec7dfa75158a5e9
   sqlite3 (2.9.2-x86_64-darwin) sha256=ed691b5021674d72582d03c5a38e89634b961902735fb6225273892805421d13
   sqlite3 (2.9.2-x86_64-linux-gnu) sha256=dce83ffcb7e72f9f7aeb6e5404f15d277a45332fe18ccce8a8b3ed51e8d23aee
