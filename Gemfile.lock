@@ -290,9 +290,9 @@ GEM
     rubydex (0.2.0-arm64-darwin)
     rubydex (0.2.0-x86_64-darwin)
     rubydex (0.2.0-x86_64-linux)
-    rubyzip (3.2.2)
+    rubyzip (3.3.0)
     securerandom (0.4.1)
-    selenium-webdriver (4.43.0)
+    selenium-webdriver (4.44.0)
       base64 (~> 0.2)
       logger (~> 1.4)
       rexml (~> 3.2, >= 3.2.5)
@@ -416,6 +416,7 @@ CHECKSUMS
   bindex (0.8.1) sha256=7b1ecc9dc539ed8bccfc8cb4d2732046227b09d6f37582ff12e50a5047ceb17e
   brakeman (8.0.4) sha256=7bf921fa9638544835df9aa7b3e720a9a72c0267f34f92135955edd80d4dcf6f
   builder (3.3.0) sha256=497918d2f9dca528fdca4b88d84e4ef4387256d984b8154e9d5d3fe5a9c8835f
+  bundler (4.0.11) sha256=5bcec0fb78302e48d02ee46f10ee6e6942be647ba5b44a6d1ddfda9a240ce785
   bundler-audit (0.9.3) sha256=81c8766c71e47d0d28a0f98c7eed028539f21a6ea3cd8f685eb6f42333c9b4e9
   capybara (3.40.0) sha256=42dba720578ea1ca65fd7a41d163dd368502c191804558f6e0f71b391054aeef
   concurrent-ruby (1.3.6) sha256=6b56837e1e7e5292f9864f34b69c5a2cbc75c0cf5338f1ce9903d10fa762d5ab
@@ -497,9 +498,9 @@ CHECKSUMS
   rubydex (0.2.0-arm64-darwin) sha256=8c0ad11bd6a103de7e9fea2fddd55dc7d7ea5635ef9751c1569b6418185381a5
   rubydex (0.2.0-x86_64-darwin) sha256=06baad305bd09a49f9abcfae5e1aa1f54d71bdae6d42d148035dab5bcaf7660a
   rubydex (0.2.0-x86_64-linux) sha256=28071b3189f80daf5ed76ad87faaf95665f987cdebc2b5203876536253442616
-  rubyzip (3.2.2) sha256=c0ed99385f0625415c8f05bcae33fe649ed2952894a95ff8b08f26ca57ea5b3c
+  rubyzip (3.3.0) sha256=a372fc67892a4f8c0bc8ec906b720353d8e48807a64b2e63adf99b1e3583a034
   securerandom (0.4.1) sha256=cc5193d414a4341b6e225f0cb4446aceca8e50d5e1888743fac16987638ea0b1
-  selenium-webdriver (4.43.0) sha256=a634377b964b701c6ac0a009ce3a08fa34ec1e1e7fe9a6d57e3088d14529a65c
+  selenium-webdriver (4.44.0) sha256=6f1df072529af369589c46f0e01132952aabb250cfd683c274d74dc1eb5d8477
   sorbet (0.6.13208) sha256=040b8de0b8746a2c7a0cabaab6f38b8508c215f344372bf818245986a9ee7240
   sorbet-runtime (0.6.13208) sha256=2ae9a6e52bbfdd39916448b09bfb165357190effb28fd8c554c5dd2c52be0a32
   sorbet-static (0.6.13208-aarch64-linux) sha256=f9da76cca799833b2c051dde2f99094bd0cc3f468a9b1aaf01789e7938fa2fe6
