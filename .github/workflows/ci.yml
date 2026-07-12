@@ -19,29 +19,7 @@ jobs:
       with-mysql: false
       test-command: "bin/rails db:test:prepare && bundle exec rspec"
 
-  # Gemfile.lockの自己整合性検証。dependabotのgem更新がCHECKSUMSセクションを
-  # 更新し忘れると、frozenモードのbundle installがexit 16で全ジョブを巻き込んで
-  # 落ちる（2026-07-12のsorbet-static不整合で実証）。bundler-cacheを使わず
-  # bundle lockで再生成し、差分が出たら明示的なエラーで早期検出する。
-  lockfile:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v7
-
-      - name: Set up Ruby
-        uses: ruby/setup-ruby@v1
-
-      - name: Verify Gemfile.lock is self-consistent
-        run: |
-          # .bundle/configのfrozen=trueは環境変数より優先されるためlocal configで解除する
-          bundle config set --local frozen false
-          bundle lock
-          git diff --exit-code Gemfile.lock || {
-            echo "::error file=Gemfile.lock::Gemfile.lock is inconsistent (stale CHECKSUMS or resolution drift). Run 'bundle config set --local frozen false && bundle lock' locally and commit the result."
-            exit 1
-          }
-
+  # Gemfile.lock整合性検証（lockfileジョブ）はreusable側rails-ci.ymlに取り込み済み。
   # importmap auditはreusable側に対応が無いためリポジトリ固有ジョブとして残す。
   scan_js:
     runs-on: ubuntu-latest
