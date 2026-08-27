@@ -15,9 +15,13 @@ jobs:
   # 失敗時のtmp/screenshotsアップロードはreusable側のtestジョブに内蔵されている。
   ci:
     uses: okamyuji/reusable-workflows/.github/workflows/rails-ci.yml@v1
+    permissions:
+      contents: read
+      pull-requests: write
     with:
       with-mysql: false
       test-command: "bin/rails db:test:prepare && bundle exec rspec"
+      dependabot-recreate: true
 
   # Gemfile.lock整合性検証（lockfileジョブ）はreusable側rails-ci.ymlに取り込み済み。
   # importmap auditはreusable側に対応が無いためリポジトリ固有ジョブとして残す。
