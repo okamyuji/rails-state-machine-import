@@ -42,6 +42,33 @@ RSpec.describe "インポートジョブの画面操作", type: :feature do
     expect(page).not_to have_selector(".modal")
   end
 
+  it "イベントフォームが進捗値とエラー文言を送り、オーバーレイではDISMISS_MODALだけを強調する" do
+    visit root_path
+    click_link "新規登録"
+    fill_in "ジョブ名", with: "E2Eフォーム"
+    fill_in "対象行数", with: "13"
+    click_button "登録"
+    within(".modal") { click_button "インポート開始" }
+
+    within(".overlay") do
+      expect(page).to have_field("processed_rows", type: :hidden, with: "3")
+      expect(page).to have_field("error_message", type: :hidden, with: "サンプルエラー")
+      expect(page).to have_selector("input.btn.primary[value='DISMISS_MODAL']")
+      expect(page).to have_selector("input.btn.primary", count: 1)
+    end
+    within("section.panel") do
+      expect(page).to have_field("processed_rows", type: :hidden, with: "3")
+      expect(page).not_to have_selector("input.btn.primary")
+    end
+
+    within(".overlay") { click_button "PROGRESS" }
+    expect(page).to have_text("3 / 13")
+
+    within(".overlay") { click_button "FAIL" }
+    expect(page).to have_selector(".badge", text: "failed")
+    expect(page).to have_selector("dd.error", text: "サンプルエラー")
+  end
+
   it "登録直後のモーダルで閉じるを選ぶとidleに戻る" do
     visit root_path
     click_link "新規登録"
