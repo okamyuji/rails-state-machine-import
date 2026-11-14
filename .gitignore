@@ -39,3 +39,4 @@
 /sorbet/rbi/annotations/
 /sorbet/rbi/todo.rbi
 
+.DS_Store
