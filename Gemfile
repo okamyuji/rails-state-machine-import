@@ -37,7 +37,7 @@ group :development, :test do
   gem "syntax_tree", require: false
 
   # RSpecによるBDDスタイルのテスト基盤です。
-  gem "rspec-rails", "~> 8.0"
+  gem "rspec-rails", "~> 8.1"
 
   # Sorbetによる漸進的な型検査です。
   gem "sorbet", require: false
